@@ -2,7 +2,8 @@
 
 超级块：包含文件系统的描述信息，和FAT32不同的是它和引导代码分开了。
 inode：全称就是index node，索引节点。
-
+其总体结构如下图：
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/ext2_1.jpg)
 超级块是全局的，除块组0外，还会在后面某些块组有备份，这个好理解。需特别说明的是：
 1、块组描述表(GDT)，一个块组只需一条块组描述，这里之所以是‘表’，是因为它也是全局的，所有块组的描述组成一个表放在一起，当然GDT也有多个备份。
 2、Reserved GDT用于支持扩充的，是可选项，和GDT一样占用的是以块为单位的容量空间。
@@ -218,7 +219,7 @@ struct ext2_inode *pi = (struct ext2_inode *)(gd[group_num].bg_inode_table * EXT
 #define EXT2_N_BLOCKS           (EXT2_TIND_BLOCK + 1)
 也就是.i_block[EXT2_IND_BLOCK]开始是间接索引，先索引到一个数据块，该数据块上放的不是文件的内容数据块，而是指向其它数据块的指针。
 同理还有二级、三级间接索引，假设指针的类型大小sizeof (ptrdiff_t)==4，那么寻块方式如下图： 
-
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/ext2_2.jpg)
  假设块大小为4KB，那么文件大小超过12 * 4KB == 48KB就需使用一级间接指针，超过 ((4KB/4) + 12) * 4KB == 4144KB就需使用二级间接指针，
 超过(pow(4KB/4, 2) + (4KB /4) + 12) * 4KB == 1049648K就需要使用三级间接指针。
 
