@@ -1,8 +1,8 @@
 现在主流的硬盘结构是以Winchester（温氏）硬盘为原型演化的，其内部结构大致如下图：
-![image](https://github.com/xudh/HF1leSys/Img/HardDisk.jpg)
-![image](https://github.com/xudh/HF1leSys/Img/HardDisk2.jpg)
-![image](https://github.com/xudh/HF1leSys/Img/HardDisk3.jpg)
-![image](https://github.com/xudh/HF1leSys/Img/HardDisk4.jpg)
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/HardDisk.jpg)
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/HardDisk2.jpg)
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/HardDisk3.jpg)
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/HardDisk4.jpg)
 
 硬盘在系统上作为一个特殊的文件存在，要往里面写入数据，必需对其盘片上各个位置进行然编址。
 
