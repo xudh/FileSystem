@@ -1,10 +1,10 @@
 文件系统概念很多，元文件很多，功能很丰富，实现比较复杂。参考http://zh.wikipedia.org/zh-cn/NTFS
-
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/ntfs1.jpg)
 MFT记录项由一个记录头和若干个属性组成的，NTFS文件系统的属性是描述文件各类信息的集合，其中的数据属性是描述文件的数据信息，如果文件很小，
 那么其数据属性里直接存放有文件的数据，否则存放的就是“映射对数组mapping pairs array”，也就是用来指向实际存放数据的簇。
 因为比较复杂，所以从结果开始分析，参考ntfs-3g_ntfsprogs-2012.1.15/ntfsprogs/mkntfs.c的代码，先编译mkntfs。
 用mkntfs -f /dev/sda1快速格式化后，可以看到元文件在磁盘分区上的布局如下图：
-
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/ntfs2.jpg)
 可以看出很多元文件小，没有占用而外的簇，是因为被直接放在MFT中。还有这些元文件的顺序也不是按照MFT表中的记录项顺序的。
 
 卷引导扇区：和其它文件系统类似，从中可以算出簇大小，本测试环境是4KB。
