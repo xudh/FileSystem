@@ -1,0 +1,19 @@
+IDE(Integrated Drive Electronics)：集成的驱动电器，本意是指把“硬盘控制器”与“盘体”集成在一起的硬盘驱动器。
+可以推测很早以前硬盘控制器和盘体是分开的配件，当前所有硬盘驱动器集成控制器的设计都属于IDE。
+早期的IDE接口有两种传输模式，一个是PIO（Programming I/O）模式，另一个是DMA（Direct Memory Access）。
+虽然DMA模式系统资源占用少，但需要额外的驱动程序或设置，因此被接受的程度比较低。
+后来在对速度要求愈来愈高的情况下，DMA模式由 于执行效率较好，操作系统开始直接支持，而且厂商更推出了愈来愈快的DMA模式传输速度标准。
+
+ATA(Advanced Technology Attachment)：高级技术附加装置，最初采用IDE接口的PIO传输模式，后来逐步过渡到DMA模式。
+从ATA-4接口标准开始正式支持Ultra DMA数据传输模式，数据传输率提升至33MB/s，因此也习惯称ATA-4为Ultra DMA 33或ATA33。
+后面ATA-5也就是Ultra DMA 66/ATA66，不足为奇。
+
+SATA(Serial Advanced Technology Attachment)：串行ATA，早期的ATA都是并行的，后来出现了串行传输数据的方式。
+PATA(Parallel Advanced Technology Attachment)：并行ATA，就是早期的ATA，好比简体字出现后将原来的字成为“繁体字”。
+
+SCSI(Small Computer System Interface)：小型计算机系统接口，是一种连结主机和外围设备的接口，
+支持包括磁盘驱动器、磁带机、光驱、扫描仪在内的多种设备，主要面向服务器 和工作站市场。
+它由SCSI控制器进行数据操作，SCSI控制器相当于一块小型CPU，有自己的命令集和缓存。
+
+SATA出现后，PATA这个后来追封的概念没有流行起来，而是以IDE指代当时还在用的并行ATA(Ultra DMA之后的版本)，也就是IDE的概念发生了降级(狭义收缩)。
+
