@@ -1,8 +1,3 @@
-对应于Windows上文件系统的‘簇’，Linux上文件系统是将几个扇区组成‘块’来使用的。容量<512MB时，块大小为1KB，否则为4KB，当然可能会有些微调。
-
-超级块：包含文件系统的描述信息，和FAT32不同的是它和引导代码分开了。
-inode：全称就是index node，索引节点。
-
 假设一个大于4GB的硬盘，块大小是4KB，块组是128MB，根据下面函数可以算出
 /*
  * Find a reasonable journal file size (in blocks) given the number of blocks
@@ -26,7 +21,8 @@ int ext2fs_default_journal_size(__u64 num_blocks)
 日志文件数据有32KB块，也就是128MB，一个块组的bg_free_blocks_count肯定不够，所以会跨块组。还有，这个大小的文件需要使用二级间接索引。
 
 ext2_inode. i_block[EXT2_N_BLOCKS];的寻块模式，如果数据块是连续的，则如下图：
-
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/ext3_1.jpg)
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/ext3_2.jpg)
 这里的块是按需分配的，也就是不会用完能索引到的所有块，按文件大小需要多少块就分多少块，间接索引的指针也是能用掉多少就分配多少。
 实现过程大致如下：
 1、计算需要消耗多少块 = 文件大小消耗的块+被征用放间接索引的块
