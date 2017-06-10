@@ -108,7 +108,7 @@ mbr.partition_record[1].sys_ind==0x0f表示W95 Ext'd (LBA)是个扩展分区。
 
 mbr分区表决定硬盘顶多能有四个主分区(也就只能装4个操作系统)，有了扩展分区后可以有3个主分区+1个扩展分区( 上面能做N个逻辑分区)，
 突破了分区数量的限制。然而LBA的2T硬盘容量限制，还是需要GPT(GUID Partition Table)分区模式。如下图：LBA0-N对应的就是扇区单位。
-
+![image](https://github.com/xudh/HF1leSys/blob/master/Img/gpt.jpg)
 其数据结构也是在./linux-2.6.18/fs/partitions/efi.h中定义
 
 typedef struct _gpt_header {
